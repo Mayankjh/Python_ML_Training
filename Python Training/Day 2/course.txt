@@ -31,7 +31,7 @@ and
 Not
 
 Membership OPERATORS
-in: returns teue if a variable is in seq of another variable else false
+in: returns true if a variable is in seq of another variable else false
 not in : returns true when not in seq else false
 
 Identity OPERATORS
