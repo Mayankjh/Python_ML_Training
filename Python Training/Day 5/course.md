@@ -41,4 +41,7 @@ NOTE:-
 
  # Multiple Inheritance
 
- 
+ class Father:
+
+# Super() keyword
+
