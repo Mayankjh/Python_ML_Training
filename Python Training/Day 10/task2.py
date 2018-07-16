@@ -1,0 +1,5 @@
+string = input("Enter string :")
+letter = input("enter letter: ")
+list1 = list(string)
+list2  = list(filter(lambda x: x!=letter, list1))
+print(("".join(list2)))
