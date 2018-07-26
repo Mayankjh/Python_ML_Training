@@ -1,8 +1,5 @@
 from tkinter import *
-from backend2 import *
-
-
-
+from backend import *
 
 
 def get_selected_row(event):   
@@ -29,6 +26,14 @@ def view_command():
     for row in view():
         list1.insert(END, row)
 
+def clearall():
+    list1.delete(0, END)
+    title.delete(0, END)
+    author.delete(0, END)
+    year.delete(0, END)
+    isbn.delete(0, END)  
+    
+
 def search_command():
     list1.delete(0, END)
     for row in search(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()):
@@ -46,7 +51,6 @@ def delete_command():
     view_command()
 
 def update_command():
-    
     index = list1.curselection()[0]
     selected_tuple = list1.get(index)
     update(selected_tuple[0],title_text.get(),author_text.get(),year_text.get(), isbn_text.get())
@@ -55,68 +59,74 @@ def update_command():
 prints()    
 
 root = Tk()
-
+filename = PhotoImage(file = "D:\\Python Training\\22.PNG")
+background_label = Label(root, image=filename)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+root.geometry("600x260")
+root.resizable(0,0)
 root.title('My BookStore')
-titlel = Label(root,text='Title :',padx=4)
-root.configure(background='#4a148c')
-titlel.grid(row=1,column=0)
+titlel = Label(root,text='Title of the Book :')
+
+titlel.grid(row=0,column=0)
 title_text = StringVar()
 title = Entry(root,width = 20,bd=4,textvariable=title_text)
-title.grid(row=1,column=1)
+title.grid(row=0,column=1)
 
 
 authorl = Label(root,text='Author :',padx=4)
-authorl.grid(row=1,column=2)
+authorl.grid(row=0,column=2)
 author_text = StringVar()
 author = Entry(root,width = 20,bd=4,textvariable=author_text)
-author.grid(row=1,column=3)
+author.grid(row=0,column=3)
 
 
-yearl = Label(root,text='Year :',padx=4)
-yearl.grid(row=2,column=0)
+yearl = Label(root,text='Year of Publication:')
+yearl.grid(row=1,column=0)
 year_text = StringVar()
 year = Entry(root,width = 20,bd=4,textvariable=year_text)
 
-year.grid(row=2,column=1,pady=4)
+year.grid(row=1,column=1,pady=4)
 
 
 isbnl = Label(root,text='ISBN     :')
-isbnl.grid(row=2,column=2)
+isbnl.grid(row=1,column=2)
 isbn_text = StringVar()
 isbn = Entry(root,width = 20,bd=4,textvariable=isbn_text)
-isbn.grid(row=2,column=3,pady=4)
+isbn.grid(row=1,column=3,pady=4)
 
 list1 = Listbox(root, height=6, width=60)
-list1.grid(row=3, column=0, rowspan=6, columnspan=2)
+list1.grid(row=2, column=0, rowspan=6, columnspan=2)
 list1.bind('<<ListboxSelect>>',get_selected_row)
 
 sb1 = Scrollbar(root)
-sb1.grid(row=3, column=2, rowspan=6)
+sb1.grid(row=2, column=2, rowspan=6)
 sb1 = Scrollbar(root)
-sb1.grid(row=3, column=2, rowspan=6)
+sb1.grid(row=2, column=2, rowspan=6)
 list1.config(yscrollcommand=sb1.set)
 sb1.config(command=list1.yview)
 
 
 
 b1 = Button(root, text="View all", width=12,pady=4,command=view_command)
-b1.grid(row=3, column=3)
+b1.grid(row=2, column=3)
 
 b2 = Button(root, text="Search entry", width=12,pady=4,command=search_command)
-b2.grid(row=4, column=3)
+b2.grid(row=3, column=3)
 
 b3 = Button(root, text="Add entry", width=12,pady=4,command=add_command)
-b3.grid(row=5, column=3)
+b3.grid(row=4, column=3)
 
 b4 = Button(root, text="Update selected", width=12,pady=4,command=update_command)
-b4.grid(row=6, column=3)
+b4.grid(row=5, column=3)
 
 b5 = Button(root, text="Delete selected", width=12,pady=4,command=delete_command)
 
-b5.grid(row=7, column=3)
+b5.grid(row=6, column=3)
 b6 = Button(root, text="Close", width=12,pady=4,command=root.destroy)
-b6.grid(row=8, column=3)
+b6.grid(row=7, column=3)
 
+b7 = Button(root, text="Clearall", width=12,pady=4,command=clearall)
+b7.grid(row=7, column=3)
 
 
 
