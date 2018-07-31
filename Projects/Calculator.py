@@ -45,7 +45,7 @@ def btnClearDisplay():
     text_Input.set("")
 
 def btnDelete1():
-    text_Input.delete(1, END)
+    text_Input.delete(a-1)
     
 def btnEqualsInput():
     global operator
