@@ -1,3 +1,9 @@
+# Python and ML
+A repository all guidelines and things that are required to get started with Python and ML .
+
+# License
+The work and material is licensed Copyright © 2018 Mayank Jha https://mayankjha.mit-license.org/
+
 # PYTHON INSTALLATION
 Version I used at my time is 3.6.2 you can install any latest version you like.
 Step 1 
